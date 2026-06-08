@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { SiteConfig, Reason } from '@/lib/config';
+import { assetPath } from '@/lib/assetPath';
 
 const ROTATIONS = [-4, 3, -2, 5, -3, 2, -4, 3.5, -1.5, 4, -2.5, 1];
 
@@ -19,7 +20,7 @@ const REASON_PHOTOS: (string | null)[] = [
   '/reasons/img_7965.jpg',
   '/reasons/img_8635.jpg',
   null,
-];
+].map(p => p ? assetPath(p) : null);
 
 interface Props { config: SiteConfig; }
 

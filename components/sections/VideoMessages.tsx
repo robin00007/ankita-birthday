@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { SiteConfig, VideoMessage } from '@/lib/config';
+import { assetPath } from '@/lib/assetPath';
 
 interface Props { config: SiteConfig; }
 
@@ -67,8 +68,9 @@ function VideoModal({ msg, accent, onClose }: { msg: VideoMessage; accent: typeo
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose]);
 
-  const embedUrl = getEmbedUrl(msg.videoUrl);
-  const isDirect = isDirectVideo(msg.videoUrl);
+  const resolvedUrl = isDirectVideo(msg.videoUrl) ? assetPath(msg.videoUrl) : msg.videoUrl;
+  const embedUrl = getEmbedUrl(resolvedUrl);
+  const isDirect = isDirectVideo(resolvedUrl);
 
   return (
     <motion.div

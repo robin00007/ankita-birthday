@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import type { SiteConfig } from '@/lib/config';
+import { assetPath } from '@/lib/assetPath';
 
 const ROTATIONS = [-4, 3, -2, 5, -3, 2];
 
@@ -12,7 +13,7 @@ const PHOTO_MAP: string[] = [
   '/moments/goldenHour.jpg',
   '/moments/forever.jpg',
   '/moments/gettingBetterWithTime.jpg',
-];
+].map(assetPath);
 
 interface Props { config: SiteConfig; }
 
